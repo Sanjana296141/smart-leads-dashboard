@@ -40,19 +40,22 @@ function Login() {
         "token",
         response.data.token
       );
-      localStorage.setItem(
-  "role",
-  response.data.user.role
-);
 
-      alert(response.data.message);
+      // SAVE ROLE
+      localStorage.setItem(
+        "role",
+        response.data.user.role
+      );
+
+      alert("Login Successful");
 
       navigate("/dashboard");
 
     } catch (error: any) {
 
       alert(
-        error.response.data.message
+        error.response?.data?.message ||
+        "Login failed"
       );
 
     }
